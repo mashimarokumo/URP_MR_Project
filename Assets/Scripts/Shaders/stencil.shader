@@ -1,4 +1,4 @@
-Shader "Unlit/stencil"
+Shader "Examples/stencil"
 {
     Properties
     {

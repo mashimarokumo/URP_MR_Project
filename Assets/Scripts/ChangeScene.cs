@@ -18,19 +18,19 @@ public class ChangeScene : MonoBehaviour
     private void Start()
     {
         renderObjects = rendererData.rendererFeatures[rendererData.rendererFeatures.Count - 1] as RenderObjects;
-        renderObjects.settings.stencilSettings.stencilReference = 1;
-        material.SetInt("_StencilID", defaultmatlayer);
+        //renderObjects.settings.stencilSettings.stencilReference = 1;
+        //material.SetInt("_StencilID", defaultmatlayer);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("MainCamera") && renderObjects.settings.stencilSettings.stencilReference != layer && timer > 0.5f)
+        if (other.CompareTag("MainCamera"))
         {
             timer = 0;
             Debug.Log(renderObjects.settings.stencilSettings.stencilReference + "to" + layer);
             renderObjects.settings.stencilSettings.stencilReference = layer;
-            material.SetInt("_StencilID", matlayer);
-            otherMaterial.SetInt("_StencilID", defaultmatlayer);
+            //material.SetInt("_StencilID", matlayer);
+            //otherMaterial.SetInt("_StencilID", defaultmatlayer);
             renderObjects.Create();
         }
     }
